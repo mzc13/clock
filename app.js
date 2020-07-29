@@ -28,7 +28,7 @@ function setDate() {
     adhanUpdateTimeout = setTimeout(reloadPage, updateInterval + 5000);
     let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     gDate.innerText = now.toLocaleDateString(undefined, options);
-    fetch('http://api.aladhan.com/v1/timings?latitude=40.68&longitude=-74.11&tune=0,0,-1,0,1,1,1,1')
+    fetch('https://api.aladhan.com/v1/timings?latitude=40.68&longitude=-74.11')
         .then(response => (response.ok) ? response.json() : Promise.reject())
         .then(json => setHijriDate(json.data))
         .then(() => fetch('https://cors-anywhere.herokuapp.com/https://www.islamicfinder.org/prayer-widget/5095445/shafi/5/0/15.0/15.0'))
