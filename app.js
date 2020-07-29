@@ -25,7 +25,7 @@ function setDate() {
     let now = new Date();
     let updateInterval = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 0).valueOf() - now.valueOf();
     clearTimeout(adhanUpdateTimeout);
-    adhanUpdateTimeout = setTimeout(reloadPage, updateInterval + 5000);
+    adhanUpdateTimeout = setTimeout(reloadPage, updateInterval + 300000);
     let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     gDate.innerText = now.toLocaleDateString(undefined, options);
     fetch('https://api.aladhan.com/v1/timings?latitude=40.68&longitude=-74.11')
