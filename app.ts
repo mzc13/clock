@@ -53,7 +53,7 @@ function setDate(){
 }
 
 function reloadPage(){
-    fetch('clock')
+    fetch('/clock')
         .then(res => (res.ok) ? location.reload() : Promise.reject())
         .catch(() => {
             errorMode("Failed trying to reload page.");
