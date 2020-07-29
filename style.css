@@ -1,0 +1,98 @@
+.fajr{
+    --main-bg-color: #fef3f3;
+    --tr-highlight-bg-color: #590606;
+}
+.sunrise{
+    --main-bg-color: #fff5f4;
+    --tr-highlight-bg-color: #f96f5d;
+}
+.dhuhr{
+    --main-bg-color: #f9faf1;
+    --tr-highlight-bg-color: #7e8933;
+}
+.asr{
+    --main-bg-color: #fff9ef;
+    --tr-highlight-bg-color: #bd7b00;
+}
+.maghrib{
+    --main-bg-color: #fef4e9;
+    --tr-highlight-bg-color: #a0390d;
+}
+.isha{
+    --main-bg-color: #e3fcff;
+    --tr-highlight-bg-color: #002529;
+}
+.purple {
+    --main-bg-color: #f9ecfc;
+    --tr-highlight-bg-color: #531063;
+}
+*{
+    margin: 0;
+}
+#gDate{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 3vh;
+    text-align: center;
+    margin-top: 1vh;
+    margin-bottom: 0.5vh;
+}
+#hDate{
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.7vh;
+    text-align: center;
+    margin-bottom: 1vh;
+}
+#canvas{
+    display: block;
+    margin: auto;
+    padding-bottom: 0;
+    width: auto;
+    height: 29vh;
+    background-color: transparent;
+}
+#time{
+    line-height: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 4.2vh;
+    text-align: center;
+    margin: 3.4vh;
+    margin-bottom: 6.5vh;
+}
+.prayerLabel{
+    padding: 0vh 1vh 0vh 1vh;
+    text-align: start;
+}
+table{
+    height: 49vh;
+    min-width: 50vh;
+    margin: auto;
+    justify-content: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 3.2vh;
+}
+td{
+    text-align: center;
+    padding: 0vh 0vh;
+}
+.highlight{
+    background-color: var(--tr-highlight-bg-color);
+    color: #ffffff;
+    text-shadow: 0vh 0.2vh 0.3vh #000000;
+}
+#maghribAdhan{
+    padding: 0vh;
+}
+.topBorder{
+    border-top: 1px solid black;
+}
+.errorTopBorder{
+    border-top: 1px solid red;
+}
+.tableContainer{
+    margin: 0vh 3vh;
+}
+body{
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+}
