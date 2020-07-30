@@ -9,6 +9,7 @@ let adhanElements = {
     dhuhr : document.getElementById('dhuhrAdhan')!,
     asr : document.getElementById('asrAdhan')!,
     maghrib : document.getElementById('maghribAdhan')!,
+    maghribIqamah : document.getElementById('maghribIqamah')!,
     isha : document.getElementById('ishaAdhan')!
 };
 let tableRows = {
@@ -53,7 +54,7 @@ function setDate(){
 }
 
 function reloadPage(){
-    fetch('/clock')
+    fetch('http://bayonnemuslimsclock.com.s3-website-us-east-1.amazonaws.com/')
         .then(res => (res.ok) ? location.reload() : Promise.reject())
         .catch(() => {
             errorMode("Failed trying to reload page.");
@@ -152,12 +153,14 @@ function islamicFinderAdhan(res : string){
         let maghrib = res.match(`<p>\\s*?Maghrib\\s*?<p>\\s*?<p>\\s*?\\d*?:\\d*?\\s*?\\w*?\\s*?<`)![0].match('\\d*:\\d*\\s*\\w*')![0];
         let isha = res.match(`<p>\\s*?Isha\\s*?<p>\\s*?<p>\\s*?\\d*?:\\d*?\\s*?\\w*?\\s*?<`)![0].match('\\d*:\\d*\\s*\\w*')![0];
 
-        adhanElements['fajr'].innerText = fajr;
-        adhanElements['sunrise'].innerText = sunrise;
-        adhanElements['dhuhr'].innerText = dhuhr;
-        adhanElements['asr'].innerText = asr;
-        adhanElements['maghrib'].innerText = maghrib;
-        adhanElements['isha'].innerText = isha;
+        let removeStart0 = (time : string) => (time[0] == '0') ? time.substring(1) : time; 
+
+        adhanElements['fajr'].innerText = removeStart0(fajr);
+        adhanElements['sunrise'].innerText = removeStart0(sunrise);
+        adhanElements['dhuhr'].innerText = removeStart0(dhuhr);
+        adhanElements['asr'].innerText = removeStart0(asr);
+        adhanElements['maghrib'].innerText = removeStart0(maghrib);
+        adhanElements['isha'].innerText = removeStart0(isha);
 
         let today = new Date().toLocaleDateString();
         fajrDate = new Date(today + " " + fajr);
@@ -167,6 +170,8 @@ function islamicFinderAdhan(res : string){
         maghribDate = new Date(today + " " + maghrib);
         ishaDate = new Date(today + " " + isha);
 
+        let maghribIqamah = new Date(maghribDate.getTime() + 5*60000);
+        adhanElements['maghribIqamah'].innerText = formatTime(maghribIqamah.getHours() + ':' + maghribIqamah.getMinutes());
         // console.log(fajrDate);
         // console.log(sunriseDate);
         // console.log(dhuhrDate);
