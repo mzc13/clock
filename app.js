@@ -53,6 +53,7 @@ function reloadPage() {
  * @param time 24-hour format string
  */
 function formatTime(time) {
+    // TODO This will fail for times that have hour value of 0 - 9
     let hour = Number.parseInt(time.substring(0, 2));
     if (hour < 12) {
         if (hour == 0) {
@@ -136,7 +137,10 @@ function islamicFinderAdhan(res) {
         maghribDate = new Date(today + " " + maghrib);
         ishaDate = new Date(today + " " + isha);
         let maghribIqamah = new Date(maghribDate.getTime() + 5 * 60000);
-        adhanElements['maghribIqamah'].innerText = formatTime(maghribIqamah.getHours() + ':' + maghribIqamah.getMinutes());
+        // TODO fix this so the function is more robust and these extra sanitation steps dont have to happen here
+        let mHour = (maghribIqamah.getHours() < 10) ? "0" + maghribIqamah.getHours() : "" + maghribIqamah.getHours();
+        let mMin = (maghribIqamah.getMinutes() < 10) ? "0" + maghribIqamah.getMinutes() : "" + maghribIqamah.getMinutes();
+        adhanElements['maghribIqamah'].innerText = formatTime(mHour + ':' + mMin);
         // console.log(fajrDate);
         // console.log(sunriseDate);
         // console.log(dhuhrDate);
