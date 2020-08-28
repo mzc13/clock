@@ -106,7 +106,7 @@ function setDate(){
 
 function reloadPage(){
     // TODO change this when deploying new app probably
-    fetch('http://bayonnemuslimsclock.com.s3-website-us-east-1.amazonaws.com/')
+    fetch('https://bmclock2020.xyz')
         .then(res => (res.ok) ? location.reload() : Promise.reject())
         .catch(() => {
             errorMode("Failed trying to reload page.");
@@ -198,8 +198,6 @@ function checkIfHighlightSwitch(now: Date){
         body.className = 'fajr';
         hightlight(tableRows['fajr']);
     }
-
-    checkIfAdhan(now);
 }
 
 function checkIfAdhan(now: Date){
@@ -229,13 +227,13 @@ function minuteChecks(){
 }
 
 function playAdhan(adhanName: keyof typeof tableRows){
-    let audio = new Audio('takbeer.mp3');
+    let audio = new Audio('assets/audio/takbeer.mp3');
     audio.play();
     flashPrayer(adhanName, 20, 700);
 }
 
 function playIqamah(){
-    let audio = new Audio('lasalah.mp3');
+    let audio = new Audio('assets/audio/lasalah.mp3');
     audio.play();
 }
 
