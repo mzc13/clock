@@ -31,11 +31,11 @@ let adhanTimes = {
     jummah : now
 }
 let iqamahTimes = {
-    fajr : todayTime("5:20 AM"),
+    fajr : todayTime("6:20 AM"),
     dhuhr : todayTime("1:30 PM"),
-    asr : todayTime("5:00 PM"),
+    asr : todayTime("4:00 PM"),
     maghrib : now,
-    isha : todayTime("9:15 PM")
+    isha : todayTime("7:45 PM")
 }
 let switchHighlightTo = {
     fajr : now,
@@ -214,7 +214,7 @@ function checkIfIqamah(now: Date){
     const oneMin = 60000;
     for(let time of Object.values(iqamahTimes)){
         if((now.valueOf() + oneMin) == time.valueOf()){
-            setTimeout(playIqamah, 40*1000);
+            setTimeout(playIqamah, 50*1000);
         }
     }
 }

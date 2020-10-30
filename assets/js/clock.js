@@ -99,5 +99,5 @@ function clockApp() {
     rotate. */
     context.translate(canvas.width / 2, canvas.height / 2);
     createClock();
-    setInterval(createClock, 1000);
+    setInterval(createClock, 500);
 }
